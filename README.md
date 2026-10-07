@@ -1,123 +1,254 @@
-# AI-Powered Email Management: Web Application and Browser Extension <img src="https://github.com/user-attachments/assets/671fc71c-3d65-4a2b-afca-8157b6bb2651" alt="Icon" width="20" height="20" style="border-radius: 50%;">
+# Smart Email Assistant
 
+An AI-powered email reply assistant built with **Java, Spring Boot, Spring AI, Google Gemini, React, and a browser extension**.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/70488be6-5b5c-4d4e-9329-b6f3becb0d11" alt="Image" style="width:50%; height:auto;">
-</p>
+The application generates context-aware email replies from the provided email content and a selected tone, with a React web interface and browser-extension integration.
 
+## Features
 
+- 🤖 **AI-Powered Email Replies**  
+  Generate context-aware email responses using Google Gemini through Spring AI.
 
-[![Java Version](https://img.shields.io/badge/Java-17%2B-blue?style=flat-square)](https://www.java.com/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2%2B-brightgreen?style=flat-square)](https://spring.io/projects/spring-boot)
-[![API](https://img.shields.io/badge/API-RESTful-yellow?style=flat-square)](https://en.wikipedia.org/wiki/Representational_state_transfer)
-[![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=flat-square)](https://reactjs.org/)
-[![Extensions](https://img.shields.io/badge/Extensions-Custom-orange?style=flat-square)](https://developer.chrome.com/docs/extensions)
-[![Build Status](https://img.shields.io/badge/Build-Passing-pink?style=flat-square)](https://github.com/18-RAJAT/SpringAI-InboxAssistant/actions)
-[![Code Style](https://img.shields.io/badge/Code%20Style-Checkstyle-darkblue?style=flat-square)](https://checkstyle.sourceforge.io/)
+- 🎯 **Tone Selection**  
+  Generate replies based on the desired communication tone, such as professional or casual.
 
+- 🔌 **REST API**  
+  Spring Boot backend exposes an API for generating AI-powered email responses.
 
+- ⚛️ **React Frontend**  
+  Web interface for entering email content, selecting a tone, and generating a response.
 
+- 🌐 **Browser Extension**  
+  Provides email-reply assistance directly within the browser.
 
-An intelligent email management system powered by Spring Boot and AI that helps you handle your inbox more efficiently through automated categorization, smart responses, and email analysis.
+## Tech Stack
 
-## Features ✨
+### Backend
+- Java 17+
+- Spring Boot
+- Spring AI
+- REST APIs
+- Maven
 
-- **AI-Powered Email Responses**: Automatically generate context-aware email replies
-- **Smart Categorization**: Automatically classify emails into categories (Important, Spam, Social, etc.)
-- **Email Summarization**: Get concise summaries of long email threads
-- **Sentiment Analysis**: Detect the emotional tone of incoming emails
-- **Follow-up Reminders**: Automatic reminders for important unanswered emails
-- **Template Suggestions**: AI-generated email templates for common responses
+### AI
+- Google Gemini API
+- Spring AI
 
-## Tech Stack 🛠️
+### Frontend
+- React
+- JavaScript
+- HTML
+- CSS
+- Vite
 
-- **Backend**: Spring Boot 3.2
-- **AI Integration**: Spring AI
-- **Email Processing**: JavaMail API
-- - **Natural Language Processing**: [![Gemini](https://img.shields.io/badge/Google%20Gemini-AI-orange?style=flat)](https://ai.google/get-started/gemini-ecosystem/)
-- **Database**:
-  - Development: [![H2 Database](https://img.shields.io/badge/Database-H2-brown?style=flat-square&logo=h2)](https://www.h2database.com/)
-  - Production: [![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-336791?style=flat-square&logo=postgresql)](https://www.postgresql.org/)
-- - **API Documentation**: [![Gemini API](https://img.shields.io/badge/Google%20Gemini-API-purple?style=flat)](https://ai.google.dev/gemini-api/docs)
-- **Build Tool**: Maven
+### Browser Extension
+- JavaScript
+- HTML
+- CSS
+- Chrome Extension APIs
 
-## Prerequisites 📋
+## Project Structure
 
-- [![Java Version](https://img.shields.io/badge/Java-17%2B-blue?style=flat-square)](https://www.java.com/)
-- [![Maven Version](https://img.shields.io/badge/Maven-3.9%2B-C71A36?style=flat-square)](https://maven.apache.org/)
-- [![Gemini API Key](https://img.shields.io/badge/Google_Gemini-API_Key-FF6F00?style=flat-square)](https://ai.google.dev/gemini-api/docs/api-key)
-- [![Email Account Credentials](https://img.shields.io/badge/Email_Account-Credentials-0078D4?style=flat-square)](https://support.google.com/mail/answer/7126229?hl=en)
+```text
+smart-email-assistant/
+│
+├── src/
+│   └── main/
+│       ├── java/com/email/writer/
+│       │   ├── EmailWriterApplication.java
+│       │   └── app/
+│       │       ├── EmailGeneratorController.java
+│       │       ├── EmailGeneratorService.java
+│       │       └── EmailRequest.java
+│       │
+│       └── resources/
+│           └── application.properties
+│
+├── email-writer-react/
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── Email-Reply-Extension/
+│   ├── content.js
+│   ├── content.css
+│   ├── popup.html
+│   ├── script.js
+│   └── manifest.json
+│
+├── pom.xml
+├── mvnw
+├── mvnw.cmd
+└── README.md
+```
 
+## How It Works
 
-## System Design 📊
-![System Design](https://github.com/user-attachments/assets/62ead8dd-838a-4b16-a037-a9a72d8b1cd0)
+```text
+User enters email content
+          │
+          ▼
+    React Frontend
+          │
+          │ HTTP POST
+          ▼
+ Spring Boot REST API
+          │
+          ▼
+ Email Generator Service
+          │
+          ▼
+      Spring AI
+          │
+          ▼
+    Google Gemini
+          │
+          ▼
+    Generated Reply
+          │
+          ▼
+    React / Extension
+```
 
-## Installation & Setup ⚙️
+## API
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/18-RAJAT/SpringAI-InboxAssistant.git
-   cd SpringAI-InboxAssistant
-   ```
+### Generate Email Reply
 
-2. **Build the project**:
-   ```bash
-   mvn clean install
-   ```
+**Endpoint**
 
-3. **Configure environment variables**:
-   - Create `application.yml` in `src/main/resources/`:
-   ```yaml
-   spring:
-      spring.application.name=email-writer
-      gemini.api.url=${GEMINI_URL}
-      gemini.api.key=${GEMINI_KEY}
-      server.port=9191
+```http
+POST /api/email/generate
+```
 
-   ```
+**Request**
 
-4. **Start the application**:
-   ```bash
-   mvn spring-boot:run
-   ```
-5. **Access API documentation**:  
-   [![Swagger UI](https://img.shields.io/badge/Swagger%20UI-YourColorCode?style=for-the-badge)](https://swagger.io/tools/swagger-ui/)
-   [![OpenAPI Spec](https://img.shields.io/badge/OpenAPI%20Spec-85EA2D?style=for-the-badge)](https://swagger.io/specification/)
+```json
+{
+  "emailContent": "Hi, I'm following up on our meeting last week. When can we expect the project deliverables?",
+  "tone": "professional"
+}
+```
 
+**Response**
 
-## Example API Request 🚀
+The API returns an AI-generated email reply based on the supplied email content and requested tone.
+
+### Example using cURL
 
 ```bash
 curl -X POST "http://localhost:9191/api/email/generate" \
 -H "Content-Type: application/json" \
 -d '{
-  "emailContent": "Hi, I'm following up on our meeting last week. When can we expect the project deliverables?",
+  "emailContent": "Hi, I am following up on our meeting last week. When can we expect the project deliverables?",
   "tone": "professional"
 }'
 ```
 
-## Key API Endpoints 📡
+## Getting Started
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/email/generate` | POST | Generate AI-powered email responses |
-| `/api/email/categorize` | POST | Categorize incoming emails |
-| `/api/email/summarize` | POST | Summarize email threads |
-| `/api/email/analyze-sentiment` | POST | Perform sentiment analysis on email content |
-| `/api/email/schedule-followup` | POST | Schedule follow-up reminders |
+### Prerequisites
 
-## Contributing 🤝
+Make sure you have:
 
-Contributions are welcome! Please follow these steps:
+- Java 17 or later
+- Maven 3.9+ (optional when using the included Maven wrapper)
+- Node.js and npm
+- A Google Gemini API key
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/your-feature`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push to the branch (`git push origin feature/your-feature`)
-5. Open a Pull Request
+### 1. Clone the repository
 
-## Acknowledgements 😇
+```bash
+git clone https://github.com/azen111/smart-email-assistant.git
+cd smart-email-assistant
+```
 
-- Spring AI team for the amazing AI integration capabilities
-- Gemini for their powerful language models
-- The Spring Boot community for continuous support and improvements
+### 2. Configure the Gemini API
+
+The application reads the Gemini configuration from environment variables.
+
+Set:
+
+```text
+GEMINI_URL=<your-gemini-api-url>
+GEMINI_KEY=<your-gemini-api-key>
+```
+
+Do **not** commit your API key to GitHub.
+
+The application expects these variables through:
+
+```properties
+gemini.api.url=${GEMINI_URL}
+gemini.api.key=${GEMINI_KEY}
+```
+
+### 3. Run the Spring Boot backend
+
+On Windows:
+
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
+Or, if Maven is installed:
+
+```bash
+mvn spring-boot:run
+```
+
+The backend runs on:
+
+```text
+http://localhost:9191
+```
+
+### 4. Run the React frontend
+
+Open another terminal:
+
+```bash
+cd email-writer-react
+npm install
+npm run dev
+```
+
+Vite will provide the local frontend URL in the terminal.
+
+## Browser Extension
+
+The project also contains a browser extension in:
+
+```text
+Email-Reply-Extension/
+```
+
+To load it in Chrome:
+
+1. Open Chrome.
+2. Navigate to `chrome://extensions`.
+3. Enable **Developer mode**.
+4. Select **Load unpacked**.
+5. Select the `Email-Reply-Extension` directory.
+6. Enable the extension.
+
+## Environment Variables
+
+| Variable | Description |
+|---|---|
+| `GEMINI_URL` | Google Gemini API endpoint |
+| `GEMINI_KEY` | Google Gemini API key |
+
+Keep credentials outside the repository. Never commit API keys, passwords, or other secrets.
+
+## Future Improvements
+
+- Improve error handling and validation
+- Add authentication and user accounts
+- Add persistent email history
+- Improve browser-extension integration
+- Add automated backend and frontend tests
+- Deploy the backend and frontend for public access
+
+## License
+
+This project is intended as a portfolio and learning project.
